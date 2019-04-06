@@ -4,6 +4,7 @@ import random
 
 class Guessing:
     secret_number = random.randrange(1, 101)
+    score = 1000
     attempts = 0
     guess = 0
     is_in_loop = True
@@ -16,7 +17,7 @@ class Guessing:
     def secret(self):
         self.attempts = self.attempts + 1
         if self.secret_number == self.guess:
-            print("You win!\n")
+            print("You win! Total Score {} points\n".format(self.score))
             print("Number of attempts: {}".format(self.attempts))
             self.is_in_loop = False
         else:
@@ -27,6 +28,7 @@ class Guessing:
             elif self.is_smaller():
                 result += "Smaller"
             print(message.format(result))
+            self.calculate_score()
 
     def show_input(self):
         if self.attempts > 0:
@@ -62,3 +64,7 @@ class Guessing:
 
     def is_smaller(self):
         return self.guess > self.secret_number
+
+    def calculate_score(self):
+        losses = abs(self.secret_number - self.guess)
+        self.score = self.score = losses
