@@ -1,42 +1,60 @@
 class Guessing:
-    secret_number = 42
+    secret_number = 5
+    attempts = 0
     guess = 0
+    is_in_loop = True
 
     def __init__(self):
         self.show_message()
-        self.show_input()
+        while self.is_in_loop:
+            self.show_input()
 
     def secret(self):
+        self.attempts = self.attempts + 1
         if self.secret_number == self.guess:
-            print("You win!")
+            print("You win!\n")
+            print("Number of attempts: {}".format(self.attempts))
+            self.is_in_loop = False
         else:
-            print("You lose!")
-            if self.is_biggest(self.guess, self.secret_number):
-                print("Is Bigger then")
-            elif self.is_smaller(self.guess, self.secret_number):
-                print("Is Smaller then")
+            message = "You miss, {}"
+            result = "the number is "
+            if self.is_bigger():
+                result += "Bigger"
+            elif self.is_smaller():
+                result += "Smaller"
+            print(message.format(result))
 
     def show_input(self):
-        str_guess = input("What is the number: ")
-        self.is_a_valid_input(str_guess)
-        self.guess = int(str_guess)
-        self.secret()
+        if self.attempts > 0:
+            print("\n", "Again:", "\n")
+        str_guess = input(">> What is the number that I thing between 1 and 10?\n")
+        if self.is_a_valid_input(str_guess):
+            self.guess = self.is_a_valid_input(str_guess)
+            self.secret()
+        else:
+            print("Error:", "The number must be between 1 and 10")
 
     @staticmethod
     def is_a_valid_input(guess):
         if not guess:
-            raise ValueError("Can not be empty")
+            raise ValueError("The value can't be empty and must be an number")
+
+        the_number = int(guess)
+
+        if 0 < the_number < 11:
+            return the_number
+        else:
+            return False
 
     @staticmethod
     def show_message():
-        message = "Well come to the guessing game!"
+        message = "Welcome to the guessing game!"
         line = "*******************************"
-        print(line, message, line)
+        header = "{}\n{}\n{}".format(line, message, line)
+        print(header)
 
-    @staticmethod
-    def is_biggest(num, guess):
-        return num > guess
+    def is_bigger(self):
+        return self.guess < self.secret_number
 
-    @staticmethod
-    def is_smaller(num, guess):
-        return num < guess
+    def is_smaller(self):
+        return self.guess > self.secret_number
