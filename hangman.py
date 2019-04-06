@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
+import header
 
 
 def play():
-    message = "Welcome to the hangman game!"
-    line = "*******************************"
-    header = "{}\n{}\n{}".format(line, message, line)
-    print(header)
+    header.define("Welcome to the hangman game!")
+
+
+if __name__ == "__main__":
+    play()

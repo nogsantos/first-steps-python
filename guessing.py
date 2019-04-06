@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import random
+import header
 
 
 class Guessing:
@@ -54,10 +55,7 @@ class Guessing:
 
     @staticmethod
     def show_message():
-        message = "Welcome to the guessing game!"
-        line = "*******************************"
-        header = "{}\n{}\n{}".format(line, message, line)
-        print(header)
+        header.define("Welcome to the guessing game!")
 
     def is_bigger(self):
         return self.guess < self.secret_number
@@ -68,3 +66,7 @@ class Guessing:
     def calculate_score(self):
         losses = abs(self.secret_number - self.guess)
         self.score = self.score = losses
+
+
+if __name__ == "__main__":
+    Guessing()

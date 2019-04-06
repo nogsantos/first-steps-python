@@ -1,20 +1,24 @@
 # -*- coding: utf-8 -*-
 from guessing import Guessing
 import hangman
+import header
 
-message = "Welcome!"
-line = "*******************************"
-header = "{}\n{}\n{}".format(line, message, line)
-print(header)
 
-print("(1) - Guessing")
-print("(2) - Hangman")
+def main():
+    header.define("Welcome!")
 
-game = int(input(">> Choose your game: "))
+    print("(1) - Guessing")
+    print("(2) - Hangman")
 
-if game == 1:
-    Guessing()
-elif game == 2:
-    hangman.play()
-else:
-    print("Game {} is not present".format(game))
+    game = int(input(">> Choose your game: "))
+
+    if game == 1:
+        Guessing()
+    elif game == 2:
+        hangman.play()
+    else:
+        print("Game {} is not present".format(game))
+
+
+if __name__ == "__main__":
+    main()
