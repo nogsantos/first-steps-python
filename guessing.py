@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class Guessing:
     secret_number = 5
     attempts = 0
