@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
+import random
+
+
 class Guessing:
-    secret_number = 5
+    secret_number = random.randrange(1, 101)
     attempts = 0
     guess = 0
     is_in_loop = True
@@ -27,8 +30,8 @@ class Guessing:
 
     def show_input(self):
         if self.attempts > 0:
-            print("\n", "Again:", "\n")
-        str_guess = input(">> What is the number that I thing between 1 and 10?\n")
+            print("\n", "Again!", "\n")
+        str_guess = input(">> What is the number that I thing between 1 and 100?\n")
         if self.is_a_valid_input(str_guess):
             self.guess = self.is_a_valid_input(str_guess)
             self.secret()
@@ -42,7 +45,7 @@ class Guessing:
 
         the_number = int(guess)
 
-        if 0 < the_number < 11:
+        if 0 < the_number < 101:
             return the_number
         else:
             return False
