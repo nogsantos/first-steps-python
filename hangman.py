@@ -16,9 +16,9 @@ def play():
 
     game_result = game_loop(hints_attempts, secret_word, secret_word_list)
 
-    print_game_result(game_result)
-
     end_game_message(secret_word)
+
+    print_game_result(game_result)
 
 
 def print_game_header(hints_attempts, secret_word_list):
@@ -46,8 +46,44 @@ def end_game_message(secret_word):
 
 
 def print_game_result(hit):
-    result = "Win" if hit else "Lose"
-    print("You {}!".format(result))
+    if hit:
+        win_result()
+    else:
+        lose_result()
+
+
+def win_result():
+    print("You Win!")
+    print("       ___________      ")
+    print("      '._==_==_=_.'     ")
+    print("      .-\\:      /-.    ")
+    print("     | (|:.     |) |    ")
+    print("      '-|:.     |-'     ")
+    print("        \\::.    /      ")
+    print("         '::. .'        ")
+    print("           ) (          ")
+    print("         _.' '._        ")
+    print("        '-------'       ")
+
+
+def lose_result():
+    print("You Lose!")
+    print("      _______________       ")
+    print("     /               \      ")
+    print("    /                 \     ")
+    print("  //                   \/\  ")
+    print("  \|   XXXX     XXXX   | /  ")
+    print("   |   XXXX     XXXX   |/   ")
+    print("   |   XXX       XXX   |    ")
+    print("   |                   |    ")
+    print("   \__      XXX      __/    ")
+    print("     |\     XXX     /|      ")
+    print("     | |           | |      ")
+    print("     | I I I I I I I |      ")
+    print("     |  I I I I I I  |      ")
+    print("     \_             _/      ")
+    print("       \_         _/        ")
+    print("         \_______/          ")
 
 
 def print_game_status(hints, hints_attempts, missing_words, secret_word_list):
